@@ -1,4 +1,6 @@
 import BirdMap from './BirdMap'
+import Search from './Search'
+import Filters from './Filters'
 
 const Drawer = () => {
   return (
@@ -14,10 +16,15 @@ const Drawer = () => {
         <label htmlFor="the-drawer" className="drawer-overlay"></label>
         <ul className="menu p-4 overflow-y-auto w-80 bg-base-100 text-base-content">
           <li>
-            <a>Menu Item</a>
+            <div>
+              <h1>Bird Sightings</h1>
+            </div>
           </li>
           <li>
-            <a>Menu Item</a>
+            <Search />
+          </li>
+          <li>
+            <Filters />
           </li>
         </ul>
       </div>

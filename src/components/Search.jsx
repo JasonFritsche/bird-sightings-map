@@ -18,6 +18,7 @@ const Search = () => {
     //   })
     devMarkers.forEach((devMarker) => {
       devMarker.isSelected = true
+      devMarker.isVisible = true
       devMarker.id = uuidv4()
     })
     setMarkers([...markers, ...devMarkers])

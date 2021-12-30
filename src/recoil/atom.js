@@ -5,22 +5,12 @@ const allMarkers = atom({
   default: []
 })
 
-const markerFilters = selector({
-  key: 'markerFilters',
+const visibleFilters = selector({
+  key: 'visibleFilters',
   get: ({ get }) => {
     const markers = get(allMarkers)
-    return [
-      ...new Set(
-        markers.map((marker) => {
-          return {
-            name: marker.comName,
-            isSelected: marker.isSelected,
-            id: marker.id
-          }
-        })
-      )
-    ]
+    return markers.filter((m) => m.isVisible)
   }
 })
 
-export { allMarkers, markerFilters }
+export { allMarkers, visibleFilters }

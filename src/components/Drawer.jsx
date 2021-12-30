@@ -21,7 +21,13 @@ const Drawer = () => {
             </div>
           </li>
           <li>
+            <div className="divider">Search</div>
+          </li>
+          <li>
             <Search />
+          </li>
+          <li>
+            <div className="divider">Filters</div>
           </li>
           <li>
             <Filters />

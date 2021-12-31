@@ -1,6 +1,7 @@
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
+import { MapContainer, TileLayer } from 'react-leaflet'
 import { useRecoilValue } from 'recoil'
 import { allMarkers as markersState } from '../recoil/atom'
+import MapMarker from './MapMarker'
 
 const BirdMap = () => {
   const markers = useRecoilValue(markersState)
@@ -9,13 +10,7 @@ const BirdMap = () => {
   const renderMarker = (marker) => {
     const _marker = marker
     if (_marker.isSelected) {
-      return (
-        <Marker key={marker.subId + marker.speciesCode} position={[marker.lat, marker.lng]}>
-          <Popup>
-            A pretty CSS3 popup. <br /> {marker.locName}
-          </Popup>
-        </Marker>
-      )
+      return <MapMarker marker={marker} />
     }
   }
   return (

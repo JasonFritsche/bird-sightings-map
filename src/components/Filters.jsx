@@ -78,7 +78,7 @@ const Filters = () => {
           <span className="label-text">Show/Hide All</span>
           <input
             type="checkbox"
-            checked={toggleAll}
+            checked={!toggleAll}
             onChange={() => handleToggleAllChange()}
             className="toggle"
           />

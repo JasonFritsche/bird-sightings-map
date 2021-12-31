@@ -1,8 +1,27 @@
+import React from 'react'
+import { useRecoilValue } from 'recoil'
+import { visibleFilters } from '../recoil/atom'
+
 import BirdMap from './BirdMap'
 import Search from './Search'
 import Filters from './Filters'
 
 const Drawer = () => {
+  const visibleMarkers = useRecoilValue(visibleFilters)
+  const showFiltersSection = () => {
+    if (visibleMarkers.length) {
+      return (
+        <React.Fragment>
+          <li>
+            <div className="divider">Filters</div>
+          </li>
+          <li>
+            <Filters />
+          </li>
+        </React.Fragment>
+      )
+    }
+  }
   return (
     <div className="drawer drawer-mobile rounded-lg shadow bg-base-200 h-full">
       <input id="the-drawer" type="checkbox" className="drawer-toggle" />
@@ -26,12 +45,7 @@ const Drawer = () => {
           <li>
             <Search />
           </li>
-          <li>
-            <div className="divider">Filters</div>
-          </li>
-          <li>
-            <Filters />
-          </li>
+          {showFiltersSection()}
         </ul>
       </div>
     </div>

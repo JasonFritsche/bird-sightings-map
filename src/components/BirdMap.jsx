@@ -1,3 +1,4 @@
+import React from 'react'
 import { MapContainer, TileLayer } from 'react-leaflet'
 import { useRecoilValue } from 'recoil'
 import { allMarkers as markersState } from '../recoil/atom'

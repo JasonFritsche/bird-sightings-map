@@ -1,5 +1,15 @@
+import React from 'react'
+import { create } from 'react-test-renderer'
+import App from '../App'
+import { RecoilRoot } from 'recoil'
+
 describe('App component', () => {
-  it('passing test', () => {
-    expect(true).toBeTruthy()
+  test('App component snapshot', () => {
+    const app = create(
+      <RecoilRoot>
+        <App />
+      </RecoilRoot>
+    )
+    expect(app.toJSON()).toMatchSnapshot()
   })
 })

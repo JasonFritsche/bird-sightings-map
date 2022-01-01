@@ -26,6 +26,7 @@
     "@babel/core": "^7.16.5",
     "@testing-library/dom": "^8.11.1",
     "@testing-library/jest-dom": "^5.16.1",
+    "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.5.0",
     "@vitejs/plugin-react": "^1.0.7",
     "babel-eslint": "^10.1.0",
@@ -46,7 +47,6 @@
     "jest-scss-transform": "^1.0.1",
     "jest-watch-typeahead": "^1.0.0",
     "prettier": "^2.5.1",
-    "react-test-renderer": "^17.0.2",
     "vite": "^2.7.2"
   },
   "jest": {

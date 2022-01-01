@@ -5,8 +5,8 @@ import { allMarkers as markersState } from '../recoil/atom'
 import devMarkers from '../utils/devMarkers'
 
 const Search = () => {
-  const lat = 30.266666
-  const lng = -97.73333
+  // const lat = 30.266666
+  // const lng = -97.73333
   const [markers, setMarkers] = useRecoilState(markersState)
   const handleSearch = () => {
     console.log('searching')

@@ -36,7 +36,7 @@ const Drawer = () => {
         <ul className="menu p-4 overflow-y-auto w-80 bg-base-100 text-base-content">
           <li>
             <div>
-              <h1>Bird Sightings</h1>
+              <h1 className="font-scada text-2xl text-orange-300 text-center">Bird Sightings</h1>
             </div>
           </li>
           <li>

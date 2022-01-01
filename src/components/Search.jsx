@@ -26,7 +26,7 @@ const Search = () => {
   }
 
   return (
-    <div>
+    <div className="flex justify-center">
       <button className="btn btn-wide btn-sm" onClick={handleSearch}>
         Search
       </button>

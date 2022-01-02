@@ -1,8 +1,17 @@
 import React from 'react'
-import { MapContainer, TileLayer } from 'react-leaflet'
+import { MapContainer, TileLayer, useMapEvents } from 'react-leaflet'
 import { useRecoilValue } from 'recoil'
 import { allMarkers as markersState } from '../recoil/atom'
 import MapMarker from './MapMarker'
+
+function MyComponent() {
+  const map = useMapEvents({
+    moveend: () => {
+      console.log(map.getCenter())
+    }
+  })
+  return null
+}
 
 const BirdMap = () => {
   const markers = useRecoilValue(markersState)
@@ -20,6 +29,7 @@ const BirdMap = () => {
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
+      <MyComponent />
       {markers.map((marker) => renderMarker(marker))}
     </MapContainer>
   )

@@ -3759,7 +3759,14 @@ kleur@^3.0.3:
   resolved "https://registry.yarnpkg.com/kleur/-/kleur-3.0.3.tgz#a79c9ecc86ee1ce3fa6206d1216c501f147fc07e"
   integrity sha512-eTIzlVOSUR+JxdDFepEYcBMtZ9Qqdef+rnzWdRZuMbOywu5tO2w2N7rqjoANZ5k9vywhL6Br1VRjUIgTQx4E8w==
 
-leaflet@^1.7.1:
+leaflet-area-select@^1.0.5:
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/leaflet-area-select/-/leaflet-area-select-1.0.5.tgz#78985f3fd1af8c5d154a2dc50825c44acd825eee"
+  integrity sha512-9xUK09gWEYn6ocooU2Ks2HGls6dH49ho14GirPlT6pUuZEG4/Uz73NKjRWgtrpR3BBqrYjU5H1zFVLUSopMhjw==
+  dependencies:
+    leaflet "^1.6.0"
+
+leaflet@^1.6.0, leaflet@^1.7.1:
   version "1.7.1"
   resolved "https://registry.yarnpkg.com/leaflet/-/leaflet-1.7.1.tgz#10d684916edfe1bf41d688a3b97127c0322a2a19"
   integrity sha512-/xwPEBidtg69Q3HlqPdU3DnrXQOvQU/CCHA1tcDQVzOwm91YMYaILjNp7L4Eaw5Z4sOYdbBz6koWyibppd8Zqw==

@@ -14,6 +14,6 @@ git add -A
 git commit -m 'deploy'
 
 # deploy that sunofagun
-git push -f git@github.com:JasonFritsche/news-from-the-wormhole.git master:gh-pages
+git push -f git@github.com:JasonFritsche/bird-sightings-map.git main:gh-pages
 
 cd -

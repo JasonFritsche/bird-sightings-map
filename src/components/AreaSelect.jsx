@@ -1,31 +1,45 @@
-import { useEffect } from 'react'
-import { useMap } from 'react-leaflet'
+import { useEffect, useState } from 'react'
+import { useMapEvents } from 'react-leaflet'
+import { useRecoilState } from 'recoil'
+import { selectedBounds } from '../recoil/atom'
 import L from 'leaflet'
+import PropTypes from 'prop-types'
 
-const AreaSelect = () => {
-  const map = useMap()
+const AreaSelect = ({ isAreaSelection }) => {
+  const [selectedArea, setSelectedArea] = useState(null)
+  const [bounds, setBounds] = useRecoilState(selectedBounds)
+
+  const map = useMapEvents({
+    areaselectstart: () => {
+      if (selectedArea) {
+        map.removeLayer(selectedArea)
+        setSelectedArea(null)
+      }
+    },
+    areaselected: (e) => {
+      const selectedLayer = L.rectangle(e.bounds, { color: 'blue', weight: 1 }).addTo(map)
+      const { _bounds } = selectedLayer
+      const selectedBounds = _bounds
+      setBounds(selectedBounds)
+      setSelectedArea(selectedLayer)
+    }
+  })
   useEffect(() => {
-    if (!map.selectArea) return
-
+    if (!isAreaSelection) {
+      map.selectArea.disable()
+      return
+    }
     map.selectArea.enable()
-
-    map.on('areaselected', (e) => {
-      console.log(e.bounds.toBBoxString()) // lon, lat, lon, lat
-      L.rectangle(e.bounds, { color: 'blue', weight: 1 }).addTo(map)
-    })
-
-    // You can restrict selection area like this:
-    const bounds = map.getBounds().pad(-0.25) // save current map bounds as restriction area
-    // check restricted area on start and move
-    map.selectArea.setValidate((layerPoint) => {
-      return bounds.contains(this._map.layerPointToLatLng(layerPoint))
-    })
 
     // now switch it off
     map.selectArea.setValidate()
-  }, [])
+  }, [isAreaSelection, map])
 
   return null
+}
+
+AreaSelect.propTypes = {
+  isAreaSelection: PropTypes.bool
 }
 
 export default AreaSelect

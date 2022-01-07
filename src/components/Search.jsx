@@ -1,7 +1,7 @@
 import React from 'react'
 import { useRecoilState, useRecoilValue } from 'recoil'
-import { v4 as uuidv4 } from 'uuid'
 import { selectedBounds, allMarkers as markersState } from '../recoil/atom'
+import { v4 as uuidv4 } from 'uuid'
 // import devMarkers from '../utils/devMarkers'
 
 const Search = () => {

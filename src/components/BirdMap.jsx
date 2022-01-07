@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useRecoilValue } from 'recoil'
 import { allMarkers as markersState } from '../recoil/atom'
 import { MapContainer, TileLayer } from 'react-leaflet'
@@ -7,7 +7,6 @@ import Control from 'react-leaflet-custom-control'
 import { BiSelection } from 'react-icons/bi'
 import MapMarker from './MapMarker'
 import AreaSelect from './AreaSelect'
-import { useState } from 'react/cjs/react.development'
 
 const BirdMap = () => {
   const [isAreaSelection, setIsAreaSelection] = useState(false)

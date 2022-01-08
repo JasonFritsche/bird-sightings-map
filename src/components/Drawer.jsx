@@ -23,7 +23,7 @@ const Drawer = () => {
     }
   }
   return (
-    <div className="drawer drawer-mobile rounded-lg shadow bg-base-200 h-full">
+    <div className="drawer rounded-lg shadow bg-base-200 h-full">
       <input id="the-drawer" type="checkbox" className="drawer-toggle" />
       <div className="flex flex-col items-center justify-center drawer-content">
         {/* <label htmlFor="the-drawer" className="btn btn-primary drawer-button">

@@ -5,8 +5,10 @@ import { MapContainer, TileLayer } from 'react-leaflet'
 import 'leaflet-area-select'
 import Control from 'react-leaflet-custom-control'
 import { BiSelection } from 'react-icons/bi'
+import { AiOutlineMenuUnfold } from 'react-icons/ai'
 import MapMarker from './MapMarker'
 import AreaSelect from './AreaSelect'
+import 'leaflet/dist/leaflet.css'
 
 const BirdMap = () => {
   const [isAreaSelection, setIsAreaSelection] = useState(false)
@@ -46,6 +48,19 @@ const BirdMap = () => {
               }}
             />
           </div>
+        </a>
+      </Control>
+      <Control position="topleft">
+        <a>
+          <label htmlFor="the-drawer" className="drawer-button cursor-pointer">
+            <AiOutlineMenuUnfold
+              size="30px"
+              style={{
+                color: '#333',
+                backgroundColor: '#fff'
+              }}
+            />
+          </label>
         </a>
       </Control>
       <AreaSelect isAreaSelection={isAreaSelection} />

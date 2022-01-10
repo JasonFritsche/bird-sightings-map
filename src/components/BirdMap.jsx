@@ -8,12 +8,16 @@ import { BiSelection } from 'react-icons/bi'
 import { AiOutlineMenuUnfold } from 'react-icons/ai'
 import MapMarker from './MapMarker'
 import AreaSelect from './AreaSelect'
+import AreaSelectMobile from './AreaSelectMobile'
+import { useMatchMedia } from '../hooks/useMatchMedia'
 import 'leaflet/dist/leaflet.css'
 
 const BirdMap = () => {
   const [isAreaSelection, setIsAreaSelection] = useState(false)
   const markers = useRecoilValue(markersState)
   const position = [30.266666, -97.73333]
+
+  const isMobileDeviceWidth = useMatchMedia('(max-width:600px)', true)
 
   const renderMarker = (marker) => {
     const _marker = marker // have to do this because marker.isSelected complains that isSelected is readonly
@@ -37,19 +41,23 @@ const BirdMap = () => {
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
 
-      <Control position="topleft">
-        <a onClick={() => setIsAreaSelection(!isAreaSelection)}>
-          <div data-tip={getSelectionTooltip()} className="tooltip tooltip-right tooltip-secondary">
-            <BiSelection
-              size="30px"
-              style={{
-                color: '#333',
-                backgroundColor: `${isAreaSelection ? '#fff' : '#bababa'}`
-              }}
-            />
-          </div>
-        </a>
-      </Control>
+      {!isMobileDeviceWidth && (
+        <Control position="topleft">
+          <a onClick={() => setIsAreaSelection(!isAreaSelection)}>
+            <div
+              data-tip={getSelectionTooltip()}
+              className="tooltip tooltip-right tooltip-secondary">
+              <BiSelection
+                size="30px"
+                style={{
+                  color: '#333',
+                  backgroundColor: `${isAreaSelection ? '#fff' : '#bababa'}`
+                }}
+              />
+            </div>
+          </a>
+        </Control>
+      )}
       <Control position="topleft">
         <a>
           <label htmlFor="the-drawer" className="drawer-button cursor-pointer">
@@ -64,6 +72,8 @@ const BirdMap = () => {
         </a>
       </Control>
       <AreaSelect isAreaSelection={isAreaSelection} />
+      {!isMobileDeviceWidth && <AreaSelect />}
+      {isMobileDeviceWidth && <AreaSelectMobile />}
       {markers.map((marker) => renderMarker(marker))}
     </MapContainer>
   )

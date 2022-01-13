@@ -2,6 +2,7 @@ import React from 'react'
 import { render, screen } from '@testing-library/react'
 import App from '../App'
 import { RecoilRoot } from 'recoil'
+import '../../jest/mocks/matchMedia.mock'
 
 test('renders App component', () => {
   render(
@@ -9,5 +10,5 @@ test('renders App component', () => {
       <App />
     </RecoilRoot>
   )
-  screen.debug()
+  // screen.debug()
 })

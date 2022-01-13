@@ -3,7 +3,7 @@ import { useRecoilValue } from 'recoil'
 import { allMarkers as markersState } from '../recoil/atom'
 import { MapContainer, TileLayer } from 'react-leaflet'
 import 'leaflet-area-select'
-import Control from 'react-leaflet-custom-control'
+// import Control from 'react-leaflet-custom-control'
 import { BiSelection } from 'react-icons/bi'
 import { AiOutlineMenuUnfold } from 'react-icons/ai'
 import MapMarker from './MapMarker'
@@ -41,7 +41,7 @@ const BirdMap = () => {
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
 
-      {!isMobileDeviceWidth && (
+      {/* {!isMobileDeviceWidth && (
         <Control position="topleft">
           <a onClick={() => setIsAreaSelection(!isAreaSelection)}>
             <div
@@ -70,7 +70,7 @@ const BirdMap = () => {
             />
           </label>
         </a>
-      </Control>
+      </Control> */}
       <AreaSelect isAreaSelection={isAreaSelection} />
       {!isMobileDeviceWidth && <AreaSelect />}
       {isMobileDeviceWidth && <AreaSelectMobile />}

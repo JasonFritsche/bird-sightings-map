@@ -6,7 +6,6 @@ import _marker from '../../assets/marker.png'
 import { Icon } from 'leaflet'
 
 const MapMarker = ({ marker }) => {
-  console.log(marker)
   return (
     <Marker
       icon={new Icon({ iconUrl: _marker, iconSize: [35, 34], iconAnchor: [12, 41] })}

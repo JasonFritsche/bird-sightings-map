@@ -3,9 +3,9 @@ import { useRecoilValue } from 'recoil'
 import { allMarkers as markersState } from '../recoil/atom'
 import { MapContainer, TileLayer } from 'react-leaflet'
 import 'leaflet-area-select'
-// import Control from 'react-leaflet-custom-control'
 import { BiSelection } from 'react-icons/bi'
 import { AiOutlineMenuUnfold } from 'react-icons/ai'
+import MapControl from './MapControl'
 import MapMarker from './MapMarker'
 import AreaSelect from './AreaSelect'
 import AreaSelectMobile from './AreaSelectMobile'
@@ -40,9 +40,8 @@ const BirdMap = () => {
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
-
-      {/* {!isMobileDeviceWidth && (
-        <Control position="topleft">
+      {!isMobileDeviceWidth && (
+        <MapControl position="topleft">
           <a onClick={() => setIsAreaSelection(!isAreaSelection)}>
             <div
               data-tip={getSelectionTooltip()}
@@ -56,9 +55,10 @@ const BirdMap = () => {
               />
             </div>
           </a>
-        </Control>
+        </MapControl>
       )}
-      <Control position="topleft">
+
+      <MapControl position="topleft">
         <a>
           <label htmlFor="the-drawer" className="drawer-button cursor-pointer">
             <AiOutlineMenuUnfold
@@ -70,7 +70,7 @@ const BirdMap = () => {
             />
           </label>
         </a>
-      </Control> */}
+      </MapControl>
       <AreaSelect isAreaSelection={isAreaSelection} />
       {!isMobileDeviceWidth && <AreaSelect />}
       {isMobileDeviceWidth && <AreaSelectMobile />}

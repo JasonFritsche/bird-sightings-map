@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import L from 'leaflet'
 
 const POSITION_CLASSES = {
   bottomleft: 'leaflet-bottom leaflet-left',
@@ -16,7 +17,7 @@ const MapControl = (props) => {
   React.useEffect(() => {
     const targetDiv = document.getElementsByClassName(positionClass)
     setContainer(targetDiv[0])
-  }, [])
+  }, [positionClass])
 
   const controlContainer = <div className="leaflet-control leaflet-bar">{props.children}</div>
 

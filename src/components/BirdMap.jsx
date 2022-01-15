@@ -5,6 +5,7 @@ import { MapContainer, TileLayer } from 'react-leaflet'
 import 'leaflet-area-select'
 import { BiSelection } from 'react-icons/bi'
 import { AiOutlineMenuUnfold } from 'react-icons/ai'
+import MarkerClusterGroup from 'react-leaflet-markercluster'
 import MapControl from './MapControl'
 import MapMarker from './MapMarker'
 import AreaSelect from './AreaSelect'
@@ -35,11 +36,15 @@ const BirdMap = () => {
   }
 
   return (
-    <MapContainer center={position} zoom={13} scrollWheelZoom={true}>
+    <MapContainer className="markercluster-map" center={position} zoom={13} scrollWheelZoom={true}>
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
+      {markers.length && (
+        <MarkerClusterGroup>{markers.map((marker) => renderMarker(marker))}</MarkerClusterGroup>
+      )}
+
       {!isMobileDeviceWidth && (
         <MapControl position="topleft">
           <a onClick={() => setIsAreaSelection(!isAreaSelection)}>
@@ -74,7 +79,6 @@ const BirdMap = () => {
       <AreaSelect isAreaSelection={isAreaSelection} />
       {!isMobileDeviceWidth && <AreaSelect />}
       {isMobileDeviceWidth && <AreaSelectMobile />}
-      {markers.map((marker) => renderMarker(marker))}
     </MapContainer>
   )
 }

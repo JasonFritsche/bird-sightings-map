@@ -26,22 +26,25 @@ const Search = () => {
   }
   const [markers, setMarkers] = useRecoilState(markersState)
   const bounds = useRecoilValue(selectedBounds)
+  const markerIsInBounds = (marker) => {
+    if (
+      marker.lat <= bounds._northEast.lat &&
+      marker.lng <= bounds._northEast.lng &&
+      marker.lng >= bounds._southWest.lng &&
+      marker.lat >= bounds._southWest.lat
+    ) {
+      // make sure the marker.lat and marker.lng are between them
+      return true
+    } else {
+      return false
+    }
+  }
   const handleSearch = () => {
     const url = `https://api.ebird.org/v2/data/obs/geo/recent?lat=${bounds._northEast.lat}&lng=${bounds._southWest.lng}&key=nukg96b4vofk`
     fetch(url)
       .then((response) => response.json())
       .then((json) => {
-        const filteredResults = json.filter((marker) => {
-          if (
-            marker.lat <= bounds._northEast.lat &&
-            marker.lng <= bounds._northEast.lng &&
-            marker.lng >= bounds._southWest.lng &&
-            marker.lat >= bounds._southWest.lat
-          ) {
-            // make sure the marker.lat and marker.lng are between them
-            return marker
-          }
-        })
+        const filteredResults = json.filter((marker) => markerIsInBounds(marker))
         filteredResults.forEach((resMarker) => {
           resMarker.isSelected = true
           resMarker.isVisible = true

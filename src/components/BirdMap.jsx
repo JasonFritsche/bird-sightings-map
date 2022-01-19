@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import { useRecoilValue } from 'recoil'
-import { allMarkers as markersState } from '../recoil/atom'
+import { useRecoilValue, useRecoilState } from 'recoil'
+import { allMarkers as markersState, selectedBounds } from '../recoil/atom'
 import { MapContainer, TileLayer } from 'react-leaflet'
 import 'leaflet-area-select'
 import { BiSelection } from 'react-icons/bi'
@@ -16,6 +16,7 @@ import 'leaflet/dist/leaflet.css'
 const BirdMap = () => {
   const [isAreaSelection, setIsAreaSelection] = useState(false)
   const markers = useRecoilValue(markersState)
+  const [bounds, setBounds] = useRecoilState(selectedBounds)
   const position = [30.266666, -97.73333]
 
   const isMobileDeviceWidth = useMatchMedia('(max-width:600px)', true)
@@ -35,8 +36,20 @@ const BirdMap = () => {
     }
   }
 
+  const setInitialMobileBounds = (map) => {
+    if (isMobileDeviceWidth && map) {
+      const selectedBounds = map.getBounds()
+      setBounds(selectedBounds)
+    }
+  }
+
   return (
-    <MapContainer className="markercluster-map" center={position} zoom={13} scrollWheelZoom={true}>
+    <MapContainer
+      whenCreated={(map) => setInitialMobileBounds(map)}
+      className="markercluster-map"
+      center={position}
+      zoom={13}
+      scrollWheelZoom={true}>
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

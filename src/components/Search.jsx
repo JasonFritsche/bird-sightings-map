@@ -40,7 +40,9 @@ const Search = () => {
     }
   }
   const handleSearch = () => {
-    const url = `https://api.ebird.org/v2/data/obs/geo/recent?lat=${bounds._northEast.lat}&lng=${bounds._southWest.lng}&key=nukg96b4vofk`
+    const url = `https://api.ebird.org/v2/data/obs/geo/recent?lat=${bounds._northEast.lat}&lng=${
+      bounds._southWest.lng
+    }&key=${import.meta.env.VITE_API_KEY}`
     fetch(url)
       .then((response) => response.json())
       .then((json) => {

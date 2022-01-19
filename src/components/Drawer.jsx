@@ -13,7 +13,7 @@ const Drawer = () => {
       return (
         <React.Fragment>
           <li>
-            <div className="divider">Filters</div>
+            <div className="divider">Results</div>
           </li>
           <li>
             <Filters />
@@ -23,7 +23,7 @@ const Drawer = () => {
     }
   }
   return (
-    <div className="drawer rounded-lg shadow bg-base-200 h-full">
+    <div className="drawer drawer-mobile rounded-lg shadow bg-base-200 h-full">
       <input id="the-drawer" type="checkbox" className="drawer-toggle" />
       <div className="flex flex-col items-center justify-center drawer-content">
         <BirdMap />

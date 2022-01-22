@@ -5,6 +5,11 @@ const allMarkers = atom({
   default: []
 })
 
+const mapPosition = atom({
+  key: 'position',
+  default: null
+})
+
 const selectedBounds = atom({
   key: 'selectedBounds',
   default: { _northEast: { lat: null, lng: null }, _southWest: { lat: null, lng: null } }
@@ -18,4 +23,4 @@ const visibleFilters = selector({
   }
 })
 
-export { allMarkers, visibleFilters, selectedBounds }
+export { allMarkers, visibleFilters, selectedBounds, mapPosition }

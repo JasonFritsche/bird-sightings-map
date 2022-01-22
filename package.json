@@ -38,6 +38,7 @@
     "@vitejs/plugin-react": "^1.0.7",
     "babel-eslint": "^10.1.0",
     "babel-jest": "^27.4.5",
+    "babel-plugin-transform-import-meta": "^2.1.0",
     "babel-plugin-transform-vite-meta-env": "1.0.3",
     "babel-preset-react-app": "^10.0.1",
     "cross-env": "^7.0.3",

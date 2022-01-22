@@ -1,6 +1,7 @@
 import React from 'react'
 import { useRecoilValue } from 'recoil'
 import { visibleFilters } from '../recoil/atom'
+// import logo from '../../assets/logo.png'
 
 import BirdMap from './BirdMap'
 import Search from './Search'
@@ -33,11 +34,8 @@ const Drawer = () => {
         <ul className="menu p-4 overflow-y-auto w-80 bg-base-100 text-base-content">
           <li>
             <div>
-              <h1 className="font-scada text-2xl text-orange-300 text-center">Bird Sightings</h1>
+              <img src={require('../../assets/logo.png')} alt="Bird Sightings Map logo" />
             </div>
-          </li>
-          <li>
-            <div className="divider">Search</div>
           </li>
           <li>
             <Search />
